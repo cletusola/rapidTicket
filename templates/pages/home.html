@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% block content %}
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapid Ticket</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="nav">
+        <h1>RapidTicket</h1>
+    </div>
+    {{aa}} 
+    <div class="top"><h3><i>Purchase Movie Tickets In One Sec</i></h3></div>
+    <div class="con">
+        <div class="mv-div">
+            <p class="av">Available Movies</p>
+                {% if movie %} 
+                {% for m in movie %} 
+                <div class="e-m-div">
+                <div class="all">
+                <img class="mv-img" src={{m.image.url}} alt="mv-image">
+                <p class="mv-p"><span>Title: </span><a href="{% url 'movie_detail' m.id %}">{{m.title}}</a></p>
+                <p class="mv-d"><span>Date: </span>{{m.show_date}}</p>
+                </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <h3>No Available Movie</h3>
+                {% endif %}    
+        </div>
+        <div class="mv-div">
+            <p class="av">Coming Soon</p>
+                {% if coming_soon %} 
+                {% for c in coming_soon %} 
+                <div class="e-m-div">
+                <div class="all">
+                <img class="mv-img" src={{c.image.url}} alt="mv-image">
+                <p class="mv-p"><span>Title: </span><a href="{% url 'movie_detail' c.id %}">{{c.title}}</a></p>
+                <p class="mv-d"><span>Date: </span> {{c.show_date}}</p>
+                </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <h3>No Available Movie</h3>
+                {% endif %}    
+        </div>
+        <div class="last">
+            &copy; RapidTicket
+        </div>
+    </div>
+</body>
+{% endblock %}
+</html>

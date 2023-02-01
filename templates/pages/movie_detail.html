@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Description</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="nav">
+        <h1>RapidTicket</h1>
+    </div>
+    <h3 class="go-h" ><a href="{% url 'home' %}" >Home</a></h3>
+    <div class="mov-detail">
+        <h3 class="mv-d-title">{{movie.title}}</h3>
+        <br/>
+        <video class="thriller" src={{movie.thriller}} controls autoplay="true"> </video>
+        <div class="mv-d-all">
+            <p><b>Ticket Price:</b> ${{movie.ticket_price}}</p>
+            <p><b>Show Date:</b> {{movie.show_date}}</p>
+            <p><b>Genre:</b> {{movie.genre}}</p>
+            <p><b>Rated:</b> {{movie.rated}}</p>
+            <p><b>Running Time:</b> {{movie.running_time}}</p>
+            <p><b>Release Date:</b> {{movie.release_date}}</p>
+            <p><b>Cast:</b> {{movie.cast}}</p>
+            <p><b>Description:</b> {{movie.description}}</p>
+            <p><b>Directed By:</b> {{movie.directed_by}}</p>
+            <p><b>Produced By:</b> {{movie.produced_by}}</p>
+        </div>
+        <br/><br/>
+        <div>
+            <h3>Purchase Ticket</h3>
+            {% if messages %}
+                {% for message in messages %}
+                <div class="msg-div">
+                    {% if message.tag == "success" %} 
+                    <span id="msg-s">{{message}}</span>
+                    {% elif message.tag == "error" %}  
+                    <span id="msg-e" >{{message}}</span>
+                    {% else %}
+                    <span id="msg-o" >{{message}}</span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% endif %}
+            <form class="order-form" method="POST" action="{% url 'order' %}">
+                {% csrf_token %}
+                <input type="hidden" name="movie_id" value="{{movie.id}}">
+                <input type="hidden" name="price" value="{{movie.ticket_price}}">
+                <input type="text" maxlength="50" name="name" placeholder="your name" required><br/>
+                <input type="email" maxlength="130" name="email" placeholder="your email" required><br/>
+                <input type="text" maxlength="20" name="phone" placeholder="your phone" required><br/>
+                <input class="number" type="number" minlength="1" name="no_of_ticket" placeholder="no. of tickets" required><br/>
+
+                <button type="submit" class="submit">Process Order</button>
+            </form>
+        </div>
+        <div class="last">
+            &copy; RapidTicket
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,116 @@
+body{
+    background-color: whitesmoke;
+}
+.nav{
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}
+.nav h1{
+    color: rgb(62, 62, 189);
+}
+.top{
+    margin: auto;
+    width: 400px;
+    height: 40px;
+    margin-top: 70px;
+
+}
+.top h3{
+    font-size: 25px;
+}
+
+.con{
+    width: auto;
+    padding: 10px;
+    margin: 5px;
+    margin-top: 80px;
+    background-color: white;
+}
+
+.e-m-div{
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    display: contents;
+  }
+  .all{
+    width: 200px;
+    display: inline-block;
+    margin: 5px;
+  }
+  .mv-img{
+    width: 99%;
+    height: 200px;
+    padding: 3px;
+    margin: 2px;
+    
+  }
+  .m-p{
+    margin-top: 5px;
+    text-align: justify;
+    margin-left: 7px;
+  }
+  .mv-p a {
+    text-decoration: none;
+  }
+  .go-h{
+    margin-left: 20px;
+  }
+  .go-h a{
+    text-decoration: none;
+    color: blue;
+  }
+  .mov-detail{
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    margin-top: 80px;
+  }
+  .thriller{
+    width: 90%;
+    height: 450px;
+  }
+
+  form{
+    padding: 4px;
+  }
+  form input{
+    width: 250px;
+    padding: 8px;
+    margin: 3px;
+  }
+  form .number{
+    width: 100px;
+  }
+  form .submit{
+    width: 100px;
+    padding: 5px;
+    margin: 4px;
+  }
+
+  .last{
+    margin-top: 100px;
+    text-align: center;
+  }
+  .msg-div{
+    width: 200px;
+    background-color: rgb(212, 218, 221);
+    padding: 1px;
+  }
+  .msg-div .msg-e{
+    color: red;
+  }
+  .msg-div .msg-s{
+    color: green;
+  }
+  .msg-div .msg-o{
+    color: blue;
+  }
+  @media (max-width:1000px) {
+    .thriller{
+      width: 99%;
+      height: 400px;
+    }
+  }
+  

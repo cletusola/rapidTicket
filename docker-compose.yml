@@ -1,0 +1,27 @@
+version: "2.1"
+
+
+services:
+  django:
+    build: .
+    container_name: django-ticket
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - /usr/src/app/ticket
+    ports: 
+      - "8000:8000"
+
+    depends_on:
+      - pgdb
+  pgdb:
+    image: postgres
+    container_name: pgdb-ticket
+    environment:
+      - POSTGRES_DB=ticket
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=localhost
+      - POSTGRES_PORT=5432
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
